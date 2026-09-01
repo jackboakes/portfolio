@@ -70,8 +70,8 @@ main {
     grid-template-columns: 25% 1fr;
     gap: 75px;
     height: 100vh;
-    margin-left: 10rem;
-    margin-right: 10rem;
+    margin-left: clamp(1.5rem, 5vw, 10rem);
+    margin-right: clamp(1.5rem, 5vw, 10rem);
     box-sizing: border-box;
 }
 
@@ -131,8 +131,8 @@ main {
 #lightbox-close {
     position: absolute;
     line-height: 0;
-    top: 3rem;
-    right: 3rem;
+    top: 2rem;
+    right: 2rem;
     color: var(--text-base);
     font-size: 3rem;
     font-weight: 600;
@@ -159,7 +159,6 @@ main {
 
     .info, .gallery {
         overflow-y: visible;
-        padding-right: 0;
     }
 
     .info {
