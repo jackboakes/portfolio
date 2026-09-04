@@ -1,0 +1,76 @@
+:root {
+    --font: var(--font-jost-bold), sans-serif;
+    --font-size: 1.4rem;
+    --title-font-size: 1.8rem;
+    --text-base: #F5E8D8;
+    --gap-size: 25px;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    margin: 0;
+    color: var(--text-base);
+    font-family: var(--font);
+    font-size: var(--font-size);
+    font-weight: 600;
+    background-color: #1C1C1C;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: none;
+}
+
+::selection {
+    background-color: var(--text-base);
+    color: #1C1C1C;
+}
+
+a {
+    color: var(--text-base);
+}
+
+a:hover {
+    color: #ffffff;
+}
+
+#lightbox {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000000cc;
+}
+
+#lightbox.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#lightbox-content {
+    max-width: 90vw;
+    max-height: 90vh;
+    object-fit: contain;
+}
+
+#lightbox-close {
+    position: absolute;
+    line-height: 0;
+    top: 2rem;
+    right: 2rem;
+    color: var(--text-base);
+    font-size: 3rem;
+    font-weight: 600;
+    cursor: pointer;
+    z-index: 2000;
+    user-select: none;
+    transition: color 0.2s ease;
+}
+
+#lightbox-close:hover {
+    color: #ffffff;
+}

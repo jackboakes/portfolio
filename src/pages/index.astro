@@ -1,0 +1,154 @@
+---
+import  MainLayout  from "../layouts/MainLayout.astro";
+import { Image } from 'astro:assets';
+const pageTitle = "Jack Boakes";
+import runeShifterImage from '../assets/images/rune-shifter.png';
+import cowImage from '../assets/images/cow.jpg';
+import hammerHeadImage from '../assets/images/great-hammerhead.png';
+import breakoutImage from '../assets/images/breakout.png';
+import gameEngineImage from '../assets/images/magik-and-clay.png';
+import rocksImage from '../assets/images/rocks.jpg';
+import starsImage from '../assets/images/star_constellation.jpg';
+---
+<MainLayout pageTitle={pageTitle}>
+    <main>
+        <section class="info">
+            <header>
+                <h1><a href="/">Jack Boakes</a></h1>
+            </header>
+            <p>Hey, I'm Jack, a final year Bachelor of Computer Science student at Deakin University focused on gameplay programming and engine development. I enjoy building stuff from scratch and getting into the details.</p>
+            <p>In my spare time, I enjoy working on side projects — mostly games, reading books, and lately I've been programming my own engine in C++.</p>
+            <nav>
+                <ul class="links">
+                    <li><a href="https://x.com/jackboakes_" target="_blank" rel="noopener noreferrer">X</a></li>
+                    <li><a href="https://jackboakes.itch.io/" target="_blank" rel="noopener noreferrer">Itch.io</a></li>
+                    <li><a href="https://www.linkedin.com/in/jack-boakes-/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                    <li><a href="https://github.com/jackboakes" target="_blank" rel="noopener noreferrer">Github</a></li>
+                    <li><a href="mailto:hello@jackboakes.com">Email</a></li>
+                </ul>
+            </nav>
+        </section>
+
+        <section class="gallery">
+
+            <div class="gallery-column">
+                <Image class="gallery-image" src={runeShifterImage} alt="2D dungeon puzzle gameplay screenshot" />
+                <Image class="gallery-image" src={cowImage} alt="Bag with cow art" />
+            </div>
+            
+            
+            <div class="gallery-column">
+                <Image class="gallery-image" src={hammerHeadImage} alt="Lowpoly Great Hammerhead 3D model" />
+                <Image class="gallery-image" src={breakoutImage} alt="Breakout gameplay screenshot" />
+                <Image class="gallery-image" src={gameEngineImage} alt="Magik and Clay gameplay screenshot" />
+            </div>
+            
+            
+            <div class="gallery-column">
+                <Image class="gallery-image" src={rocksImage} alt="Coastal view with rocks" />
+                <Image class="gallery-image" src={starsImage} alt="2D start constellation puzzle gameplay screenshot" />
+            </div>
+        </section>
+    </main>
+</MainLayout>
+
+
+<style>
+    main {
+        display: grid;
+        grid-template-columns: 1fr;
+        margin: 0 1.5rem;
+        gap: 0;
+        box-sizing: border-box;
+    }
+
+    h1 {
+        font-size: var(--title-font-size);
+        margin: 0 0 5rem;
+    }
+
+    h1 a {
+        text-decoration: none;
+    }
+
+    .info {
+        padding-top: 5rem;
+        padding-bottom: 10rem;
+    }
+
+    .info p {
+        line-height: 1.8;
+    }
+
+    .links {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--gap-size);
+        padding: 0;
+        margin: 0;
+        margin-top: 10rem;
+    }
+
+    .links li {
+        display: block;
+    }
+
+    .gallery {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding-top: 0;
+        padding-bottom: 1.5rem;
+    }
+
+    .gallery-column {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .gallery-image {
+        width: 100%;
+        height: auto;
+        display: block;
+        cursor: pointer;
+    }
+
+    @media (width >= 768px) {
+        :global(body) {
+            overflow: hidden;
+        }
+
+        main {
+            grid-template-columns: 25% 1fr;
+            gap: 75px;
+            height: 100vh;
+            margin-left: clamp(1.5rem, 5vw, 10rem);
+            margin-right: clamp(1.5rem, 5vw, 10rem);
+        }
+
+        .info, .gallery {
+            height: 100%;
+            overflow-y: auto;
+            box-sizing: border-box;
+            padding-block: 10rem;
+            scrollbar-width: none;
+        }
+
+        .info::-webkit-scrollbar, .gallery::-webkit-scrollbar {
+            display: none;
+        }
+
+        .gallery {
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--gap-size);
+            padding-top: 10rem;
+            padding-bottom: 10rem;
+        }
+
+        .gallery-column {
+            gap: var(--gap-size);
+        }
+    }
+</style>
