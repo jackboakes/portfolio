@@ -2,6 +2,7 @@
 import { Font } from "astro:assets";
 import '../styles/global.css';
 const { pageTitle } = Astro.props;
+const { description } = Astro.props
 ---
 
 <!--
@@ -27,9 +28,9 @@ const { pageTitle } = Astro.props;
         <link rel="icon" href="/favicon.ico" />
         <meta name="viewport" content="width=device-width" />
         <meta name="generator" content={Astro.generator} />
-        <meta name="description" content="A developer portfolio by Jack Boakes"/>
+        <meta name="description" content={description} />
         <meta property="og:title" content={pageTitle} />
-        <meta property="og:description" content="A developer portfolio by Jack Boakes"/>
+        <meta property="og:description" content={description} />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://jackboakes.com" />
         <title>{pageTitle}</title>

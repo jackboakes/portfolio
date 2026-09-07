@@ -1,3 +1,3 @@
 # Personal Website
-by Jack Boakes
+by Jack Boakes  
 Made with Astro

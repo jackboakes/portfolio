@@ -12,7 +12,9 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^7.3.1"
+    "@astrojs/markdown-remark": "^7.3.0",
+    "astro": "^7.3.1",
+    "rehype-prism-plus": "^2.0.2"
   },
   "allowScripts": {
     "esbuild": true

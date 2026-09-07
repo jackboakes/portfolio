@@ -1,13 +1,170 @@
 ---
 import  MainLayout  from "../layouts/MainLayout.astro";
+const { frontmatter } = Astro.props;
 ---
-<MainLayout>
-    <header>
-        <a class="back-link" href="/">Jack Boakes</a>
-    </header>
+<MainLayout pageTitle={frontmatter.title + ' | by Jack Boakes'} description={frontmatter.description}>
+
     <article class="post">
-        <header class="blog-meta">
-            <h1>Blog Meta</h1>
+        <a class="back-link" href="/">Jack Boakes</a>
+        <header class="post-header">
+            <h1 class="title">{frontmatter.title}</h1>
+            <p class="date">
+                {new Date(frontmatter.pubDate).toLocaleDateString("en-US", {
+                weekday: "long",
+                year: "numeric",
+                month: "long",
+                day: "numeric"
+            })}
+            </p>
+            <p class="description">{frontmatter.description}</p>
+            
+            
         </header>
+        <slot />
     </article>
 </MainLayout>
+<style>
+    .post {
+        max-width: 65ch;
+        margin: 0 auto;
+        padding: 10rem 2rem 10rem;
+    }
+
+    .back-link {
+        font-size: var(--title-font-size);
+        display: inline-block;
+        text-decoration: none;
+        margin-bottom: 5rem;
+    }
+
+    .post-header .date, 
+    .post-header .author,
+    .post-header .date {
+        opacity: 0.5;
+        margin: 0;
+    }
+
+    .post-header .description {
+        opacity: 0.5;
+        margin-top: 1em;
+        margin-bottom: 3rem;
+    }
+
+    .post-header .date {
+        margin-bottom: 3rem;
+    }
+
+    .post h1 {
+        font-size: var(--title-font-size);
+        margin-bottom: 0;
+    }
+
+    .post h2 {
+        margin: 4rem 0 2rem;
+    }
+
+    .post p {
+        line-height: 1.8;
+        margin: 0 0 2rem;
+    }
+
+    .post :global(img) {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 3rem 0;
+    }
+
+    /* Code blocks */
+
+    .post :global(pre) {
+        position: relative;
+        background: #252525;
+        padding: 2rem;
+        overflow-x: auto;
+        margin: 3rem 0;
+        line-height: 1.6;
+    }
+
+    .post :global(code) {
+        font-size: 1.4rem;
+    }
+
+    .post :global(p code) {
+        background: #2a2a2a;
+        padding: 0.2rem 0.5rem;
+        border-radius: 3px;
+    }
+
+    /* Prism syntax theme */
+    .post :global(.token.comment),
+    .post :global(.token.prolog),
+    .post :global(.token.doctype),
+    .post :global(.token.cdata) {
+        color: #6a6a6a;
+    }
+
+    .post :global(.token.punctuation) {
+        color: #b0a090;
+    }
+
+    .post :global(.token.property),
+    .post :global(.token.tag),
+    .post :global(.token.boolean),
+    .post :global(.token.number),
+    .post :global(.token.constant),
+    .post :global(.token.symbol),
+    .post :global(.token.deleted) {
+        color: #e8967d;
+    }
+
+    .post :global(.token.selector),
+    .post :global(.token.attr-name),
+    .post :global(.token.string),
+    .post :global(.token.char),
+    .post :global(.token.builtin),
+    .post :global(.token.inserted) {
+        color: #a8c67f;
+    }
+
+    .post :global(.token.operator),
+    .post :global(.token.entity),
+    .post :global(.token.url),
+    .post :global(.language-css .token.string) {
+        color: #d4a76a;
+    }
+
+    .post :global(.token.atrule),
+    .post :global(.token.attr-value),
+    .post :global(.token.keyword) {
+        color: #c49a6c;
+    }
+
+    .post :global(.token.function),
+    .post :global(.token.class-name) {
+        color: #e8c47d;
+    }
+
+    .post :global(.token.regex),
+    .post :global(.token.important),
+    .post :global(.token.variable) {
+        color: #d4a76a;
+    }
+
+    /* rehype-prism-plus line numbers */
+    .post :global(.code-line) {
+        display: block;
+    }
+
+    .post :global(.line-number::before) {
+        display: inline-block;
+        width: 2rem;
+        margin-right: 1rem;
+        padding-right: 0.8rem;
+        text-align: right;
+        color: rgba(245, 232, 216, 0.35);
+        border-right: 1px solid rgba(245, 232, 216, 0.15);
+        content: attr(line);
+        user-select: none;
+    }
+</style>

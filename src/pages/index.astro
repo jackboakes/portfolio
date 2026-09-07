@@ -1,5 +1,6 @@
 ---
 import  MainLayout  from "../layouts/MainLayout.astro";
+const allPosts = Object.values(import.meta.glob('./blog/*.md', { eager: true }));
 import { Image } from 'astro:assets';
 const pageTitle = "Jack Boakes";
 import runeShifterImage from '../assets/images/rune-shifter.png';
@@ -10,7 +11,7 @@ import gameEngineImage from '../assets/images/magik-and-clay.png';
 import rocksImage from '../assets/images/rocks.jpg';
 import starsImage from '../assets/images/star_constellation.jpg';
 ---
-<MainLayout pageTitle={pageTitle}>
+<MainLayout pageTitle={pageTitle} description={"A developer portfolio by Jack Boakes"}>
     <main>
         <section class="info">
             <header>
@@ -25,6 +26,25 @@ import starsImage from '../assets/images/star_constellation.jpg';
                     <li><a href="https://www.linkedin.com/in/jack-boakes-/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
                     <li><a href="https://github.com/jackboakes" target="_blank" rel="noopener noreferrer">Github</a></li>
                     <li><a href="mailto:hello@jackboakes.com">Email</a></li>
+                </ul>
+            </nav>
+            <nav>
+                <ul class="links">
+                {allPosts
+                    .sort((a: any, b: any) => b.frontmatter.pubDate.localeCompare(a.frontmatter.pubDate))
+                    .map((post: any) => (
+                    <li>
+                        <a href={post.url}>{post.frontmatter.title}</a>
+                        <span class="post-date">
+                            {new Date(post.frontmatter.pubDate).toLocaleDateString("en-US", {
+                            weekday: "short",
+                            year: "numeric",
+                            month: "short",
+                            day: "numeric"
+                            }) + " "}
+                        </span>
+                    </li>
+                    ))}
                 </ul>
             </nav>
         </section>
@@ -83,7 +103,7 @@ import starsImage from '../assets/images/star_constellation.jpg';
     .links {
         display: flex;
         flex-direction: column;
-        align-items: flex-start;
+        align-items: stretch;
         gap: var(--gap-size);
         padding: 0;
         margin: 0;
@@ -91,7 +111,14 @@ import starsImage from '../assets/images/star_constellation.jpg';
     }
 
     .links li {
-        display: block;
+        display: flex;
+        justify-content: space-between;
+        list-style: none;
+        padding: 0;
+    }
+
+    .links li .post-date {
+        opacity: 0.5;
     }
 
     .gallery {
