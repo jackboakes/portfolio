@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig, fontProviders } from 'astro/config';
 import rehypePrismPlus from 'rehype-prism-plus';
+import rehypeExternalLinks from 'rehype-external-links';
 
 // https://astro.build/config
 export default defineConfig({
@@ -19,6 +20,9 @@ export default defineConfig({
     }],
     markdown: {
         syntaxHighlight: false,
-        rehypePlugins: [[rehypePrismPlus, { showLineNumbers: true }]],
-    },
+        rehypePlugins: [
+            [rehypePrismPlus, { showLineNumbers: true }],
+            [rehypeExternalLinks, { target: '_blank', rel: ['noopener', 'noreferrer'] }]
+        ]
+    }
 });
