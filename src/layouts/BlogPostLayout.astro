@@ -27,7 +27,7 @@ const { frontmatter } = Astro.props;
     .post {
         max-width: 65ch;
         margin: 0 auto;
-        padding: 10rem 2rem 10rem;
+        padding: 5rem 1.5rem 5rem;
     }
 
     .back-link {
@@ -37,20 +37,19 @@ const { frontmatter } = Astro.props;
         margin-bottom: 5rem;
     }
 
-    .post-header .date, 
-    .post-header .author,
-    .post-header .date {
+    .post-header .title {
+        margin: 0;
+    }
+
+    .post-header .date, {
         opacity: 0.5;
         margin: 0;
+        margin-bottom: 3rem;
     }
 
     .post-header .description {
         opacity: 0.5;
         margin-top: 1em;
-        margin-bottom: 3rem;
-    }
-
-    .post-header .date {
         margin-bottom: 3rem;
     }
 
@@ -65,7 +64,7 @@ const { frontmatter } = Astro.props;
 
     .post p {
         line-height: 1.8;
-        margin: 0 0 2rem;
+        margin: 0 0 1.5rem;
     }
 
     .post :global(img) {
@@ -76,11 +75,10 @@ const { frontmatter } = Astro.props;
     }
 
     /* Code blocks */
-
     .post :global(pre) {
         position: relative;
         background: #252525;
-        padding: 2rem;
+        padding: 1.5rem;
         overflow-x: auto;
         margin: 3rem 0;
         line-height: 1.6;
@@ -151,20 +149,28 @@ const { frontmatter } = Astro.props;
         color: #d4a76a;
     }
 
-    /* rehype-prism-plus line numbers */
-    .post :global(.code-line) {
-        display: block;
-    }
+    @media (width >= 768px) {
+        .post {
+            max-width: 65ch;
+            margin: 0 auto;
+            padding: 10rem 2rem 10rem;
+        }
 
-    .post :global(.line-number::before) {
-        display: inline-block;
-        width: 2rem;
-        margin-right: 1rem;
-        padding-right: 0.8rem;
-        text-align: right;
-        color: rgba(245, 232, 216, 0.35);
-        border-right: 1px solid rgba(245, 232, 216, 0.15);
-        content: attr(line);
-        user-select: none;
+        /* rehype-prism-plus line numbers */
+        .post :global(.code-line) {
+            display: block;
+        }
+
+        .post :global(.line-number::before) {
+            display: inline-block;
+            width: 2rem;
+            margin-right: 1rem;
+            padding-right: 0.8rem;
+            text-align: right;
+            color: rgba(245, 232, 216, 0.35);
+            border-right: 1px solid rgba(245, 232, 216, 0.15);
+            content: attr(line);
+            user-select: none;
+        }
     }
 </style>

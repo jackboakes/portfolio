@@ -1,14 +1,8 @@
 ---
 layout: ../../layouts/BlogPostLayout.astro
-
 title: 'Hello World'
-
 pubDate: 2026-09-07
-
-description: 'Why I built this website, and how.'
-
-
-
+description: 'Why I created this website, and how.'
 ---
 
 
@@ -21,7 +15,7 @@ int main()
 }
 ```
 
-I mainly built this website to have ownership over how my content is displayed. A place that's created by me — even if amateur.
+I mainly created this website to have ownership over how my content is displayed. A place that's created by me — even if amateur.
 
 I created this blog so I have a place to write that's off social media, out of sight, and unpressured, while still requiring more effort than if I were to write into my phone's notes app.
 
@@ -31,4 +25,4 @@ Initially, I created this site in HTML and CSS. This worked well, but creating a
 
 After some Googling, I came across [Astro](https://astro.build/), a static site generator. I completed the tutorial, which covered its main features.  The features that appeared useful to me were the built-in [Markdown](https://docs.astro.build/en/guides/markdown-content/) support and [Layouts](https://docs.astro.build/en/basics/layouts/).  I was happy to keep it as close to the original HTML as possible, without adding granular components. Even with little web experience, this framework was easy to pick up, being so similar to HTML.
 
-With Layouts, I could create a template for the website with global CSS and include it so it would be applied to every page. I could also create a layout for the blog posts. Each post is defined in a Markdown file, which is globbed, and the content populates the layout at build time.
+With Layouts, I could create a template for the website with global CSS and include it so it would be applied to every page. I could also create a layout for the blog posts. Each post is defined in a Markdown file, which is globbed, and its content populates the layout at build time.
