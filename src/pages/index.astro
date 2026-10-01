@@ -13,78 +13,95 @@ import starsImage from '../assets/images/star_constellation.jpg';
 ---
 <MainLayout pageTitle={pageTitle} description={"A developer portfolio by Jack Boakes"}>
     <main>
-        <section class="info">
-            <header>
-                <h1><a href="/">Jack Boakes</a></h1>
-            </header>
-            <p>Hey, I'm Jack, a final year Bachelor of Computer Science student at Deakin University focused on gameplay programming and engine development. I enjoy building stuff from scratch and getting into the details.</p>
-            <p>In my spare time, I enjoy working on side projects — mostly games, reading books, and lately I've been programming my own engine in C++.</p>
-            <nav>
-                <ul class="links">
-                    <li><a href="https://x.com/jackboakes_" target="_blank" rel="noopener noreferrer">X</a></li>
-                    <li><a href="https://jackboakes.itch.io/" target="_blank" rel="noopener noreferrer">Itch.io</a></li>
-                    <li><a href="https://www.linkedin.com/in/jack-boakes-/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-                    <li><a href="https://github.com/jackboakes" target="_blank" rel="noopener noreferrer">Github</a></li>
-                    <li><a href="mailto:hello@jackboakes.com">Email</a></li>
-                </ul>
-            </nav>
-            <nav>
-                <ul class="links">
-                {allPosts
-                    .sort((a: any, b: any) => b.frontmatter.pubDate.localeCompare(a.frontmatter.pubDate))
-                    .map((post: any) => (
-                    <li>
-                        <a href={post.url}>{post.frontmatter.title}</a>
-                        <span class="post-date">
-                            {new Date(post.frontmatter.pubDate).toLocaleDateString("en-US", {
-                            weekday: "short",
-                            year: "numeric",
-                            month: "short",
-                            day: "numeric"
-                            }) + " "}
-                        </span>
-                    </li>
-                    ))}
-                </ul>
-            </nav>
-        </section>
+        <div class="lhs">
+            <section class="info">
+                        <header>
+                            <h1><a href="/">Jack Boakes</a></h1>
+                        </header>
+                        <p>Hey, I'm Jack, a Computer Science graduate from Deakin University focused on gameplay programming and engine development. I enjoy building stuff from scratch and getting into the details.</p>
+                        <p>In my spare time, I enjoy working on side projects — mostly games, reading books, and lately I've been programming my own engine in C++.</p>
+                        <nav>
+                            <ul class="links">
+                                <li><a href="https://x.com/jackboakes_" target="_blank" rel="noopener noreferrer">X</a></li>
+                                <li><a href="https://jackboakes.itch.io/" target="_blank" rel="noopener noreferrer">Itch.io</a></li>
+                                <li><a href="https://www.linkedin.com/in/jack-boakes-/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                                <li><a href="https://github.com/jackboakes" target="_blank" rel="noopener noreferrer">Github</a></li>
+                                <li><a href="mailto:hello@jackboakes.com">Email</a></li>
+                            </ul>
+                        </nav>
+                        <nav>
+                            <ul class="links">
+                            {allPosts
+                                .sort((a: any, b: any) => b.frontmatter.pubDate.localeCompare(a.frontmatter.pubDate))
+                                .map((post: any) => (
+                                <li>
+                                    <a href={post.url}>{post.frontmatter.title}</a>
+                                    <span class="post-date">
+                                        {new Date(post.frontmatter.pubDate).toLocaleDateString("en-US", {
+                                        weekday: "short",
+                                        year: "numeric",
+                                        month: "short",
+                                        day: "numeric"
+                                        }) + " "}
+                                    </span>
+                                </li>
+                                ))}
+                            </ul>
+                        </nav>
+                    </section>
 
-        <section class="gallery">
+                    <section class="gallery">
 
-            <div class="gallery-column">
-                <Image class="gallery-image" src={runeShifterImage} alt="2D dungeon puzzle gameplay screenshot" />
-                <Image class="gallery-image" src={cowImage} alt="Bag with cow art" />
-            </div>
-            
-            
-            <div class="gallery-column">
-                <Image class="gallery-image" src={hammerHeadImage} alt="Lowpoly Great Hammerhead 3D model" />
-                <Image class="gallery-image" src={breakoutImage} alt="Breakout gameplay screenshot" />
-                <Image class="gallery-image" src={gameEngineImage} alt="Magik and Clay gameplay screenshot" />
-            </div>
-            
-            
-            <div class="gallery-column">
-                <Image class="gallery-image" src={rocksImage} alt="Coastal view with rocks" />
-                <Image class="gallery-image" src={starsImage} alt="2D start constellation puzzle gameplay screenshot" />
-            </div>
-        </section>
+                        <div class="gallery-column">
+                            <Image class="gallery-image" src={runeShifterImage} alt="2D dungeon puzzle gameplay screenshot" />
+                            <Image class="gallery-image" src={cowImage} alt="Bag with cow art" />
+                        </div>
+                        
+                        
+                        <div class="gallery-column">
+                            <Image class="gallery-image" src={hammerHeadImage} alt="Lowpoly Great Hammerhead 3D model" />
+                            <Image class="gallery-image" src={breakoutImage} alt="Breakout gameplay screenshot" />
+                            <Image class="gallery-image" src={gameEngineImage} alt="Magik and Clay gameplay screenshot" />
+                        </div>
+                        
+                        
+                        <div class="gallery-column">
+                            <Image class="gallery-image" src={rocksImage} alt="Coastal view with rocks" />
+                            <Image class="gallery-image" src={starsImage} alt="2D start constellation puzzle gameplay screenshot" />
+                        </div>
+                    </section>
+        </div>
+
+        <div class="rhs">
+
+        </div>
+        
     </main>
+    <script>
+        import "../scripts/lightbox.js";
+    </script>
 </MainLayout>
 
 
 <style>
     main {
+        display: flex;
+        padding: 1.6rem;
+    }
+
+    .lhs {
         display: grid;
         grid-template-columns: 1fr;
-        margin: 0 1.5rem;
-        gap: 0;
-        box-sizing: border-box;
+        
+    }
+
+    .rhs {
+        display: none;
     }
 
     h1 {
         font-size: var(--title-font-size);
-        margin: 0 0 5rem;
+        margin-bottom: 5rem;
     }
 
     h1 a {
@@ -92,8 +109,7 @@ import starsImage from '../assets/images/star_constellation.jpg';
     }
 
     .info {
-        padding-top: 5rem;
-        padding-bottom: 10rem;
+        margin-bottom: 10rem;
     }
 
     .info p {
@@ -104,9 +120,7 @@ import starsImage from '../assets/images/star_constellation.jpg';
         display: flex;
         flex-direction: column;
         align-items: stretch;
-        gap: var(--gap-size);
-        padding: 0;
-        margin: 0;
+        gap: 2.5rem;
         margin-top: 10rem;
     }
 
@@ -124,58 +138,42 @@ import starsImage from '../assets/images/star_constellation.jpg';
     .gallery {
         display: grid;
         grid-template-columns: 1fr;
-        gap: 1.5rem;
-        padding-top: 0;
-        padding-bottom: 1.5rem;
+        gap: var(--gap-size);
     }
 
     .gallery-column {
         display: flex;
         flex-direction: column;
-        gap: 1.5rem;
+        gap: var(--gap-size);
     }
 
     .gallery-image {
         width: 100%;
         height: auto;
         display: block;
-        cursor: pointer;
     }
 
     @media (width >= 768px) {
-        :global(body) {
-            overflow: hidden;
+        .lhs {
+            max-width: 65ch;
         }
-
-        main {
-            grid-template-columns: 25% 1fr;
-            gap: 75px;
-            height: 100vh;
-            margin-left: clamp(1.5rem, 5vw, 10rem);
-            margin-right: clamp(1.5rem, 5vw, 10rem);
-        }
-
-        .info, .gallery {
-            height: 100%;
-            overflow-y: auto;
-            box-sizing: border-box;
-            padding-block: 10rem;
-            scrollbar-width: none;
-        }
-
-        .info::-webkit-scrollbar, .gallery::-webkit-scrollbar {
-            display: none;
-        }
-
+        
         .gallery {
             grid-template-columns: repeat(3, 1fr);
-            gap: var(--gap-size);
-            padding-top: 10rem;
-            padding-bottom: 10rem;
+        }
+    }
+
+    @media (width >= 1024px) {
+        .lhs {
+            flex: 0 0 65ch;
         }
 
-        .gallery-column {
-            gap: var(--gap-size);
+        .rhs {
+            display: block;
+            flex: 1;
+            position: sticky;
+            top: 1.6rem;
+            height: calc(100vh - 3.2rem);
         }
     }
 </style>

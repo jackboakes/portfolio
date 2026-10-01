@@ -3,7 +3,13 @@
     --font-size: 1.6rem;
     --title-font-size: 2.2rem;
     --text-base: #F5E8D8;
-    --gap-size: 25px;
+    --gap-size: 1.6rem;
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
 }
 
 html {
@@ -11,7 +17,6 @@ html {
 }
 
 body {
-    margin: 0;
     color: var(--text-base);
     font-family: var(--font);
     font-size: var(--font-size);
@@ -27,6 +32,10 @@ body {
     color: #1C1C1C;
 }
 
+p {
+    margin-bottom: 2.4rem;
+}
+
 a {
     color: var(--text-base);
 }
@@ -35,42 +44,21 @@ a:hover {
     color: #ffffff;
 }
 
-#lightbox {
+#image-preview {
     display: none;
-    position: fixed;
-    z-index: 1000;
-    top: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: #000000cc;
-}
-
-#lightbox.active {
-    display: flex;
-    justify-content: center;
+    height: 100%;
     align-items: center;
+    justify-content: right;
 }
 
-#lightbox-content {
-    max-width: 90vw;
-    max-height: 90vh;
+#image-preview.active {
+    display: flex;
+}
+
+#image-preview-content {
+    display: block;
+    min-width: 0;
+    max-height: 80%;
+    max-width: 80%;
     object-fit: contain;
-}
-
-#lightbox-close {
-    position: absolute;
-    line-height: 0;
-    top: 2rem;
-    right: 2rem;
-    color: var(--text-base);
-    font-size: 3rem;
-    font-weight: 600;
-    cursor: pointer;
-    z-index: 2000;
-    user-select: none;
-    transition: color 0.2s ease;
-}
-
-#lightbox-close:hover {
-    color: #ffffff;
 }
