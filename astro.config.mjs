@@ -7,13 +7,13 @@ import rehypeExternalLinks from 'rehype-external-links';
 export default defineConfig({
     fonts: [{
         provider: fontProviders.local(),
-        name: "Jost",
-        cssVariable: "--font-jost-bold",
+        name: "Source-Serif-4",
+        cssVariable: "--font-regular",
         fallbacks: ["sans-serif"],
         options: {
         variants: [{
-            src: ['./src/assets/fonts/jost-v20-latin-600.woff2'],
-            weight: '600',
+            src: ['./src/assets/fonts/source-serif-4-v14-latin-regular.woff2'],
+            weight: '400',
             style: 'normal'
         }]
         }

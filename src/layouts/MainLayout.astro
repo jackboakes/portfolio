@@ -34,14 +34,29 @@ const { description } = Astro.props
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://jackboakes.com" />
         <title>{pageTitle}</title>
-        <Font cssVariable="--font-jost-bold" preload />
+        <Font cssVariable="--font-regular" preload />
+        <script is:inline>
+            const saved = localStorage.getItem('dark-mode');
+            const prefersDark = matchMedia('(prefers-color-scheme: dark)').matches;
+            if (saved === 'active' || (saved === null && prefersDark)) {
+                document.documentElement.classList.add('dark-mode');
+            }
+        </script>
     </head>
 
     <body>
+        <button id="theme-switch">
+            <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="12"/>
+            </svg>
+        </button>
     <slot />
     </body>
+
+    <script>
+        document.getElementById('theme-switch')?.addEventListener('click', () => {
+            const isDark = document.documentElement.classList.toggle('dark-mode');
+            localStorage.setItem('dark-mode', isDark ? 'active' : 'inactive');
+        });
+    </script>
 </html>
-
-
-
-

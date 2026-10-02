@@ -1,9 +1,42 @@
 :root {
-    --font: var(--font-jost-bold), sans-serif;
-    --font-size: 1.6rem;
-    --title-font-size: 2.2rem;
-    --text-base: #F5E8D8;
+    --font: var(--font-regular), sans-serif;
+    --font-size: 1.8rem;
+    --title-font-size: 2.0rem;
+    --text-colour: #111111;
+    --bg-colour: #FFFFFF;
+    --selection-colour: #649aff;
     --gap-size: 1.6rem;
+
+    --code-bg: #f4f4f4;
+    --code-inline-bg: #ebebeb;
+    --code-line-number: rgba(17, 17, 17, 0.35);
+    --code-line-number-border: rgba(17, 17, 17, 0.15);
+
+    --token-comment: #7a7a7a;
+    --token-punctuation: #6b5d4f;
+    --token-property: #b94a2e;
+    --token-string: #4d7a1e;
+    --token-operator: #9a6a1f;
+    --token-keyword: #8f5f2a;
+    --token-function: #8a6a0a;
+}
+
+:root.dark-mode {
+    --text-colour: #F5F5F5;
+    --bg-colour: #1c1c1c;
+
+    --code-bg: #252525;
+    --code-inline-bg: #2a2a2a;
+    --code-line-number: rgba(245, 232, 216, 0.35);
+    --code-line-number-border: rgba(245, 232, 216, 0.15);
+
+    --token-comment: #6a6a6a;
+    --token-punctuation: #b0a090;
+    --token-property: #e8967d;
+    --token-string: #a8c67f;
+    --token-operator: #d4a76a;
+    --token-keyword: #c49a6c;
+    --token-function: #e8c47d;
 }
 
 * {
@@ -17,37 +50,45 @@ html {
 }
 
 body {
-    color: var(--text-base);
+    color: var(--text-colour);
     font-family: var(--font);
     font-size: var(--font-size);
-    font-weight: 600;
-    background-color: #1C1C1C;
+    font-weight: 400;
+    background-color: var(--bg-colour);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -webkit-text-size-adjust: none;
 }
 
+h1 {
+    font-weight: 400;
+}
+
 ::selection {
-    background-color: var(--text-base);
-    color: #1C1C1C;
+    /*background-color: rgb(142, 163, 255); */
+    background-color: var(--selection-colour);
+    color: var(--bg-colour);
 }
 
 p {
+    line-height: 1.1;
     margin-bottom: 2.4rem;
 }
 
 a {
-    color: var(--text-base);
+    color: var(--text-colour);
+    text-underline-offset: 2px;
 }
 
 a:hover {
-    color: #ffffff;
+    opacity: 0.2;
+    text-decoration: none;
 }
 
 #image-preview {
     display: none;
     height: 100%;
-    margin-top: 5rem;
+    margin-top: 6.6rem;
 }
 
 #image-preview-card {
@@ -55,7 +96,7 @@ a:hover {
 }
 
 #image-preview-card p {
-    margin-bottom: 0.8rem;
+    margin-top: 0.8rem;
 }
 
 #image-preview.active {
@@ -69,4 +110,20 @@ a:hover {
     max-width: 100%; 
     max-height: 75vh;
     object-fit: contain;
+}
+
+#theme-switch {
+    position: fixed;
+    top: 1.6rem;
+    right: 1.6rem;
+    border: 0;
+    background: none;
+    line-height: 0;
+    fill: var(--text-colour);
+    z-index: 2000;
+    cursor: pointer;
+}
+
+#theme-switch svg {
+    display: block;
 }

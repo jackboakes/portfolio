@@ -8,7 +8,7 @@ const previewText = document.createElement('p');
 const previewImg = document.createElement('img');
 previewImg.id = 'image-preview-content';
 
-previewCard.append(previewText, previewImg);
+previewCard.append( previewImg, previewText);
 preview.appendChild(previewCard);
 
 document.querySelector('.rhs').appendChild(preview);
