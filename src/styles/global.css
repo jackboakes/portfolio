@@ -81,8 +81,8 @@ a {
 }
 
 a:hover {
-    opacity: 0.2;
     text-decoration: none;
+    color: var(--selection-colour);
 }
 
 #image-preview {
